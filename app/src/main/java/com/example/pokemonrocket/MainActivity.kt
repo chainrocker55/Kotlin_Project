@@ -1,10 +1,7 @@
 package com.example.pokemonrocket
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -12,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.*
-import com.example.pokemonrocket.ui.home.AboutFragment
+import com.example.pokemonrocket.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -55,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
         return when(item?.itemId){
            R.id.nav_share ->{
                shareSuccess()
@@ -63,7 +63,9 @@ class MainActivity : AppCompatActivity() {
            }
 
            else ->{
-             super.onOptionsItemSelected(item)
+               NavigationUI.onNavDestinationSelected(item!!,
+                   navController)
+                       || super.onOptionsItemSelected(item)
            }
        }
 
