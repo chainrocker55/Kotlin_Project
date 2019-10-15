@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.Inventory.InventoryFragment">
-
     <data>
-<!--        <variable-->
-<!--            name="inventory"-->
-<!--            type="com.example.pokemonrocket.ui.Inventory.InventoryViewModel" />-->
-
+        <variable
+            name="inventortViewModel"
+            type="com.example.pokemonrocket.ui.Inventory.InventoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

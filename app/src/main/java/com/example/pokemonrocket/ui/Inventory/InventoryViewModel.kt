@@ -10,22 +10,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class InventoryViewModel(
-    val database: PokemonDatabaseDao,
-    application: Application
+class InventoryViewModel(val database: PokemonDatabaseDao,
+                    application: Application
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _navigateToHome = MutableLiveData<Boolean>()
-    val navigateToHome: LiveData<Boolean> get() = _navigateToHome
-
+    private val _navigateToInventory = MutableLiveData<Boolean>()
+    val navigateToInventory: LiveData<Boolean> get() = _navigateToInventory
     fun onClickInventory(){
         uiScope.launch {
-            _navigateToHome.value = true
+            _navigateToInventory.value = true
         }
     }
     fun doneNavigating(){
-        _navigateToHome.value = null;
+        _navigateToInventory.value = null;
     }
 }

@@ -24,4 +24,11 @@
     <string name="add_pokemon">Add Pokemon</string>
     <string name="add">Add</string>
     <string name="clear">Clear</string>
+    <string name="edit_pokemon">Edit Pokemon</string>
+    <string name="name">Name</string>
+    <string name="type">Type</string>
+    <string name="power">Power</string>
+    <string name="save">save</string>
+    <string name="name">Name</string>
+    <string name="save">save</string>
 </resources>

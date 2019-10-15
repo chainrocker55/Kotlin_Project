@@ -27,11 +27,18 @@
         <action
             android:id="@+id/action_inventoryFragment_to_addPokemonFragment"
             app:destination="@id/addPokemonFragment" />
+        <action
+            android:id="@+id/action_inventoryFragment_to_editPokemonFragment"
+            app:destination="@id/editPokemonFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPokemonFragment"
         android:name="com.example.pokemonrocket.ui.addPokemon.AddPokemonFragment"
         android:label="fragment_add_pokemon"
         tools:layout="@layout/fragment_add_pokemon" />
+    <fragment
+        android:id="@+id/editPokemonFragment"
+        android:name="com.example.pokemonrocket.ui.editPokemon.EditPokemonFragment"
+        android:label="EditPokemonFragment" />
 
 </navigation>

@@ -4,8 +4,9 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokemonrocket.database.PokemonDatabaseDao
+import com.example.pokemonrocket.ui.home.HomeViewModel
 
-class InventoryViewModelFactory(
+class InventoryViewmodelFactory(
     private val dataSource: PokemonDatabaseDao,
     private val application: Application
 ) : ViewModelProvider.Factory {
