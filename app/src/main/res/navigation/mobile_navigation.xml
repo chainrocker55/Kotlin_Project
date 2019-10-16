@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/inventoryFragment"
-        android:name="com.example.pokemonrocket.ui.Inventory.InventoryFragment"
+        android:name="com.example.pokemonrocket.ui.inventory.InventoryFragment"
         android:label="fragment_inventory"
         tools:layout="@layout/fragment_inventory" >
         <action

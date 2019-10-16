@@ -1,4 +1,4 @@
-package com.example.pokemonrocket.ui.Inventory
+package com.example.pokemonrocket.ui.inventory
 
 
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 
 import com.example.pokemonrocket.R
 import com.example.pokemonrocket.database.PokemonDatabase
@@ -30,7 +32,14 @@ class InventoryFragment : Fragment() {
         val inventortViewModel = ViewModelProviders.of(this, viewModelFactory).get(InventoryViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.inventortViewModel = inventortViewModel
-
+        inventortViewModel.navigateToInsert.observe(this, Observer { click ->
+            click?.let {
+                this.findNavController().navigate(
+                    InventoryFragmentDirections.actionInventoryFragmentToAddPokemonFragment()
+                )
+                inventortViewModel.doneNavigating()
+            }
+        })
         return binding.root
     }
 

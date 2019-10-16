@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.addPokemon.AddPokemonFragment">
-
+    <data>
+        <variable
+            name="editPokemonViewModel"
+            type="com.example.pokemonrocket.ui.editPokemon.EditPokemonViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
