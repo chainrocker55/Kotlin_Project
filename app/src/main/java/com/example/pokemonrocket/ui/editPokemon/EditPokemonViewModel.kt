@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class EditPokemonViewModel(val database: PokemonDatabaseDao,
+class EditPokemonViewModel(val dataSource: PokemonDatabaseDao,
                            application: Application
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()

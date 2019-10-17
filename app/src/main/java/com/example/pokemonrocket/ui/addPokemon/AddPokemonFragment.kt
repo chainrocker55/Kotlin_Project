@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.pokemonrocket.R
 import com.example.pokemonrocket.database.PokemonDatabase
 import com.example.pokemonrocket.databinding.FragmentAddPokemonBinding
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -29,9 +30,10 @@ class AddPokemonFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = PokemonDatabase.getInstance(application).pokemonDatabaseDao
         val viewModelFactory = AddPokemonViewModelFactory(dataSource,application)
-        val homeViewModel = ViewModelProviders.of(this, viewModelFactory).get(AddPokemonViewModel::class.java)
+        val addPokemonViewModel = ViewModelProviders.of(this, viewModelFactory).get(AddPokemonViewModel::class.java)
+
+        binding.addPokemonViewModel = addPokemonViewModel
         binding.setLifecycleOwner(this)
-        binding.addPokemonViewModel = homeViewModel
 //        addPokemonViewModel.navigateToInventory.observe(this, Observer { click ->
 //            click?.let {
 //                this.findNavController().navigate(
@@ -40,6 +42,20 @@ class AddPokemonFragment : Fragment() {
 //                homeViewModel.doneNavigating()
 //            }
 //        })
+
+
+        addPokemonViewModel.showSnackBarEvent.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                Snackbar.make(
+                    activity!!.findViewById(android.R.id.content),
+                    getString(R.string.insert_message),
+                    Snackbar.LENGTH_SHORT // How long to display the message.
+                ).show()
+                // Reset state to make sure the toast is only shown once, even if the device
+                // has a configuration change.
+                addPokemonViewModel.doneShowingSnackbar()
+            }
+        })
         return binding.root
     }
 

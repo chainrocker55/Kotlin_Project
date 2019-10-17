@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.pokemonrocket.R
 import com.example.pokemonrocket.database.PokemonDatabase
 import com.example.pokemonrocket.databinding.FragmentInventoryBinding
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -30,14 +31,27 @@ class InventoryFragment : Fragment() {
         val dataSource = PokemonDatabase.getInstance(application).pokemonDatabaseDao
         val viewModelFactory = InventoryViewmodelFactory(dataSource,application)
         val inventortViewModel = ViewModelProviders.of(this, viewModelFactory).get(InventoryViewModel::class.java)
-        binding.setLifecycleOwner(this)
+
         binding.inventortViewModel = inventortViewModel
+        binding.setLifecycleOwner(this)
         inventortViewModel.navigateToInsert.observe(this, Observer { click ->
             click?.let {
                 this.findNavController().navigate(
                     InventoryFragmentDirections.actionInventoryFragmentToAddPokemonFragment()
                 )
                 inventortViewModel.doneNavigating()
+            }
+        })
+        inventortViewModel.showSnackBarEvent.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                Snackbar.make(
+                    activity!!.findViewById(android.R.id.content),
+                    getString(R.string.cleared_message),
+                    Snackbar.LENGTH_SHORT // How long to display the message.
+                ).show()
+                // Reset state to make sure the toast is only shown once, even if the device
+                // has a configuration change.
+                inventortViewModel.doneShowingSnackbar()
             }
         })
         return binding.root

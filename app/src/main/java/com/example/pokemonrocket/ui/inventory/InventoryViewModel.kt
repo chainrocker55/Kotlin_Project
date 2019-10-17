@@ -1,16 +1,15 @@
 package com.example.pokemonrocket.ui.inventory
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.example.pokemonrocket.database.PokemonDatabaseDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
-class InventoryViewModel(val database: PokemonDatabaseDao,
+class InventoryViewModel(val dataSource: PokemonDatabaseDao,
                     application: Application
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()
@@ -18,6 +17,48 @@ class InventoryViewModel(val database: PokemonDatabaseDao,
 
     private val _navigateToInsert = MutableLiveData<Boolean>()
     val navigateToInsert: LiveData<Boolean> get() = _navigateToInsert
+
+    val database = dataSource
+
+    val pokemons = database.getAllPokemon()
+
+    init {
+        Log.i("InventoryViewModel", "InventoryViewModel created!")
+        pokemons.value?.forEach {
+            Log.i("Fetch Records", "Id: ${it.pokemonId}, Name: ${it.name}, Type: ${it.type}, Power: ${it.power}")
+        }
+    }
+
+
+//    db.bookDao().getAllBooks().forEach()
+//    {
+
+//    }
+    private var _showSnackbarEvent = MutableLiveData<Boolean?>()
+    val showSnackBarEvent: LiveData<Boolean?>
+        get() = _showSnackbarEvent
+    fun doneShowingSnackbar() {
+        _showSnackbarEvent.value = null
+    }
+    val clearButtonVisible = Transformations.map(pokemons){
+        it.isNotEmpty()
+    }
+
+    fun onClear() {
+        uiScope.launch {
+            // Clear the database table.
+            clear()
+            _showSnackbarEvent.value = true
+        }
+    }
+    private suspend fun clear() {
+        withContext(Dispatchers.IO) {
+            database.clear()
+        }
+    }
+
+
+
     fun onClickAdd(){
         uiScope.launch {
             _navigateToInsert.value = true
@@ -25,5 +66,10 @@ class InventoryViewModel(val database: PokemonDatabaseDao,
     }
     fun doneNavigating(){
         _navigateToInsert.value = null;
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("InventoryViewModel", "InventoryViewModel destroyed!")
     }
 }

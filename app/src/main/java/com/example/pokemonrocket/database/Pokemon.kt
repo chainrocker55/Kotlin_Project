@@ -11,7 +11,7 @@ data class Pokemon(
     var pokemonId: Long = 0L,
 
     @ColumnInfo(name = "name")
-    val name: String = "",
+    var name: String = "",
 
     @ColumnInfo(name = "type")
     var type: String = "",

@@ -29,4 +29,7 @@
     <string name="type">Type</string>
     <string name="power">Power</string>
     <string name="save">save</string>
+
+    <string name="insert_message">Insert success pokemon</string>
+    <string name="cleared_message">Clear all pokemon</string>
 </resources>

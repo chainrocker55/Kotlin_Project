@@ -1,6 +1,7 @@
 package com.example.pokemonrocket.ui.home
 
 import android.app.Application
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -12,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class HomeViewModel( val database: PokemonDatabaseDao,
+class HomeViewModel( val dataSource: PokemonDatabaseDao,
                      application: Application
 ) : AndroidViewModel(application) {
     private var viewModelJob = Job()
@@ -20,6 +21,10 @@ class HomeViewModel( val database: PokemonDatabaseDao,
 
     private val _navigateToInventory = MutableLiveData<Boolean>()
     val navigateToInventory: LiveData<Boolean> get() = _navigateToInventory
+
+    init {
+        Log.i("HomeViewModel", "HomeViewModel created!")
+    }
     fun onClickInventory(){
         uiScope.launch {
             _navigateToInventory.value = true
@@ -27,5 +32,9 @@ class HomeViewModel( val database: PokemonDatabaseDao,
     }
     fun doneNavigating(){
         _navigateToInventory.value = null;
+    }
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("HomeViewModel", "HomeViewModel destroyed!")
     }
 }

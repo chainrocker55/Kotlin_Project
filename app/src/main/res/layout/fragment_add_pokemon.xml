@@ -37,6 +37,7 @@
             android:ems="10"
             android:hint="@string/name"
             android:inputType="textPersonName"
+            android:text="@{addPokemonViewModel.nameTextVisible?null:addPokemonViewModel.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/list_title" />
@@ -49,6 +50,7 @@
             android:ems="10"
             android:hint="@string/type"
             android:inputType="textPersonName"
+            android:text="@{addPokemonViewModel.typeTextVisible?null:addPokemonViewModel.type}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_name" />
@@ -61,6 +63,7 @@
             android:ems="10"
             android:hint="@string/power"
             android:inputType="number"
+            android:text="@{addPokemonViewModel.powerTextVisible?null:addPokemonViewModel.power}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_type" />
@@ -72,6 +75,7 @@
             android:layout_marginTop="32dp"
             android:text="@string/save"
             app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{()->addPokemonViewModel.onSave()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_power" />
     </androidx.constraintlayout.widget.ConstraintLayout>
