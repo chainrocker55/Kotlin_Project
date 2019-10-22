@@ -12,7 +12,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg2">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_clear">
+
+            <!-- In the TextView, we can access the nightsString LiveData,
+                 which keeps it displayed and updated in the TextView
+                 whenever it changes. -->
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:text="@{inventortViewModel.pokemonString}" />
+        </ScrollView>
 
         <TextView
             android:id="@+id/list_title"
@@ -47,8 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/add"
             android:onClick="@{()->inventortViewModel.onClickAdd()}"
+            android:text="@string/add"
             app:layout_constraintEnd_toStartOf="@+id/btn_clear"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:enabled="@{inventortViewModel.clearButtonVisible}"
+            android:onClick="@{()->inventortViewModel.onClear()}"
             android:text="@string/clear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

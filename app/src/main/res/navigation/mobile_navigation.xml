@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_inventoryFragment"
-            app:destination="@+id/inventoryFragment" />
+            app:destination="@+id/inventoryFragment"
+            app:popUpTo="@+id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -26,16 +27,23 @@
         tools:layout="@layout/fragment_inventory" >
         <action
             android:id="@+id/action_inventoryFragment_to_addPokemonFragment"
-            app:destination="@id/addPokemonFragment" />
+            app:destination="@id/addPokemonFragment"
+            app:popUpTo="@+id/inventoryFragment" />
         <action
             android:id="@+id/action_inventoryFragment_to_editPokemonFragment"
-            app:destination="@id/editPokemonFragment" />
+            app:destination="@id/editPokemonFragment"
+            app:popUpTo="@+id/addPokemonFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPokemonFragment"
         android:name="com.example.pokemonrocket.ui.addPokemon.AddPokemonFragment"
         android:label="fragment_add_pokemon"
-        tools:layout="@layout/fragment_add_pokemon" />
+        tools:layout="@layout/fragment_add_pokemon" >
+        <action
+            android:id="@+id/action_addPokemonFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment"
+            app:popUpTo="@+id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/editPokemonFragment"
         android:name="com.example.pokemonrocket.ui.editPokemon.EditPokemonFragment"

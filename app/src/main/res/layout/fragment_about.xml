@@ -6,37 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.AboutFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gameOverConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
 
-
-        <TextView
-            android:id="@+id/txtInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/about"
-            android:textColor="@color/black"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="276dp"
-            android:layout_height="273dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="277dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="16dp"
             android:contentDescription="@string/about"
-            android:src="@drawable/ic_menu_gallery"
+            android:src="@drawable/pokemon_logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.574"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtInfo" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.example.android.trackmysleepquality.formatPokemon
 import com.example.pokemonrocket.database.PokemonDatabaseDao
 import kotlinx.coroutines.*
 
@@ -29,11 +30,11 @@ class InventoryViewModel(val dataSource: PokemonDatabaseDao,
         }
     }
 
+    val pokemonString = Transformations.map(pokemons) { pokemons ->
+        formatPokemon(pokemons, application.resources)
+    }
 
-//    db.bookDao().getAllBooks().forEach()
-//    {
 
-//    }
     private var _showSnackbarEvent = MutableLiveData<Boolean?>()
     val showSnackBarEvent: LiveData<Boolean?>
         get() = _showSnackbarEvent
@@ -72,4 +73,6 @@ class InventoryViewModel(val dataSource: PokemonDatabaseDao,
         super.onCleared()
         Log.i("InventoryViewModel", "InventoryViewModel destroyed!")
     }
+
+
 }

@@ -9,9 +9,11 @@
             name="addPokemonViewModel"
             type="com.example.pokemonrocket.ui.addPokemon.AddPokemonViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
 
         <TextView
             android:id="@+id/list_title"
@@ -75,7 +77,6 @@
             android:layout_marginTop="32dp"
             android:text="@string/save"
             app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="@{()->addPokemonViewModel.onSave()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_power" />
     </androidx.constraintlayout.widget.ConstraintLayout>

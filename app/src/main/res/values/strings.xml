@@ -32,4 +32,10 @@
 
     <string name="insert_message">Insert success pokemon</string>
     <string name="cleared_message">Clear all pokemon</string>
+
+    <!-- Output to TextView styled with a little HTML -->
+    <string name="title"><![CDATA[<h3>HERE IS YOUR SLEEP DATA</h3>]]></string>
+    <string name="name_lebel"><![CDATA[<b>Pokemon: </b>]]></string>
+    <string name="type_lebel"><![CDATA[<b>Type:</b>]]></string>
+    <string name="power_lebel"><![CDATA[<b>Power:</b>]]></string>
 </resources>

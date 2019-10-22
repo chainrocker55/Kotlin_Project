@@ -7,10 +7,10 @@ import androidx.room.*
 @Dao
 interface PokemonDatabaseDao{
     @Insert
-    fun insert(night: Pokemon)
+    fun insert(pokemon: Pokemon)
 
     @Update
-    fun update(night: Pokemon)
+    fun update(pokemon: Pokemon)
 
     @Query("SELECT * FROM PokemonRocketTable WHERE pokemonId = :key")
     fun get(key: Long) : Pokemon

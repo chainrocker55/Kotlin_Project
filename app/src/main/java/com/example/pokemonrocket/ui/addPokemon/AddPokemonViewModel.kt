@@ -29,6 +29,8 @@ class AddPokemonViewModel(
     private val _power = MutableLiveData<String>()
     val power : LiveData<String> get() = _power
 
+
+
     val nameTextVisible = Transformations.map(name){
         it == null
     }
@@ -38,6 +40,7 @@ class AddPokemonViewModel(
     val powerTextVisible = Transformations.map(power){
         it == null
     }
+
 
     init {
         Log.i("AddViewModel", "AddViewModel created!")
@@ -52,17 +55,21 @@ class AddPokemonViewModel(
         _showSnackbarEvent.value = null
     }
 
-    fun onSave() {
+    fun onSave(txtName:String,txtType:String,txtPower:String) {
         uiScope.launch {
             // Create a new night, which captures the current time,
             // and insert it into the database.
-//            val newPokemon = Pokemon()
-//            newPokemon.name = name.value.toString()
-//            newPokemon.type = type.value.toString()
-//            newPokemon.power = power.value.toString().toInt()
+            _name.value = txtName
+            _type.value = txtType
+            _power.value = txtPower
+
+            val newPokemon = Pokemon()
+            newPokemon.name = name.value.toString()
+            newPokemon.type = type.value.toString()
+            newPokemon.power = power.value.toString().toInt()
             Log.i("Add Pokemon",name.value.toString()+" "+type.value.toString()+" "+power.value.toString())
 
-            //insert(newPokemon)
+            insert(newPokemon)
             _showSnackbarEvent.value = true
         }
     }
@@ -91,6 +98,7 @@ class AddPokemonViewModel(
 //    fun doneNavigating(){
 //        _navigateToInventory.value = null;
 //    }
+
 }
 
 
