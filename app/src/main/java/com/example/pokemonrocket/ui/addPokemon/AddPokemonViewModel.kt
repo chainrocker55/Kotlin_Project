@@ -48,6 +48,7 @@ class AddPokemonViewModel(
     }
 
 
+
     private var _showSnackbarEvent = MutableLiveData<Boolean?>()
     val showSnackBarEvent: LiveData<Boolean?>
         get() = _showSnackbarEvent
@@ -55,6 +56,11 @@ class AddPokemonViewModel(
         _showSnackbarEvent.value = null
     }
 
+    fun onSetValue(nameState:String, typeState:String, powerState:String){
+        _name.value = nameState
+        _type.value = typeState
+        _power.value = powerState
+    }
     fun onSave(txtName:String,txtType:String,txtPower:String) {
         uiScope.launch {
             // Create a new night, which captures the current time,
@@ -84,20 +90,6 @@ class AddPokemonViewModel(
     }
 
 
-//    val pokemonString = Transformations.map(pokemons) { pokemons ->
-//        formatNights(pokemons, application.resources)
-//    }
-//    private val _insert = MutableLiveData<Boolean>()
-//    val navigateToInventory: LiveData<Boolean> get() = _navigateToInventory
-//
-//    fun onClickAdd(){
-//        uiScope.launch {
-//            _navigateToInventory.value = true
-//        }
-//    }
-//    fun doneNavigating(){
-//        _navigateToInventory.value = null;
-//    }
 
 }
 

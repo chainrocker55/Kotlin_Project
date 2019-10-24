@@ -12,6 +12,7 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.*
 import com.example.pokemonrocket.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -79,4 +80,32 @@ class MainActivity : AppCompatActivity() {
     private fun shareSuccess() {
         startActivity(getShareIntent())
     }
+    override fun onResume() {
+        super.onResume()
+
+        Timber.i("onResume Called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause Called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop Called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy Called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.i("onRestart Called")
+    }
+
+
+
 }
