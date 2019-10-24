@@ -15,6 +15,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="about">About</string>
+    <string name="about_content"> \t\t\tItem space is easily one of the most confusing and frustrating aspects of the game. Having a finite number of items you can carry at any given time means decisions will need to be made from time to time based on what your personal focus is in game. We can all easily remember tossing out unwanted Potions only to regret it a couple battles later. So let’s take a look at optimizing the space we have.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
