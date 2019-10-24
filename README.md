@@ -1,10 +1,17 @@
-Lesson 1: Build your first app
-Lesson 2: Layouts
-Lesson 3: Navigation
-Lesson 4: Activity and fragment lifecycles
-Lesson 5: Architecture components
-Lesson 6: Room database and coroutines
-Lesson 7: RecyclerView
+	About App
+ Lesson 1: Build your first app
+
+ Lesson 2: Layouts
+
+ Lesson 3: Navigation
+
+ Lesson 4: Activity and fragment lifecycles
+
+ Lesson 5: Architecture components
+
+ Lesson 6: Room database and coroutines
+
+ Lesson 7: RecyclerView
 
 	Techniques
 1	mockup
