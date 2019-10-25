@@ -39,4 +39,7 @@
     <string name="name_lebel"><![CDATA[<b>Pokemon: </b>]]></string>
     <string name="type_lebel"><![CDATA[<b>Type:</b>]]></string>
     <string name="power_lebel"><![CDATA[<b>Power:</b>]]></string>
+    <string name="title_pokemon">title_pokemon</string>
+    <string name="name_pokemon"><b>Pokemon Name : </b> %s</string>
+    <string name="type_power"><b>Type : </b> %s   <b>Power : </b> %d</string>
 </resources>

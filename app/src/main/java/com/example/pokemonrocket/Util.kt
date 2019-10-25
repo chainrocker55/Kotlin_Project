@@ -43,6 +43,12 @@ import java.util.*
  * @return  Spanned - An interface for text that has formatting attached to it.
  *           See: https://developer.android.com/reference/android/text/Spanned
  */
+fun convertNameDurationToFormatted(name:String, res:Resources):String{
+    return res.getString(R.string.name_pokemon,name)
+}
+fun convertTypePowerDurationToFormatted(type:String, power:Int, res:Resources):String{
+    return res.getString(R.string.type_power, type, power)
+}
 fun formatPokemon(pokemons: List<Pokemon>, resources: Resources): Spanned {
     val sb = StringBuilder()
     sb.apply {

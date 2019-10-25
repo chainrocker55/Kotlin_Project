@@ -49,4 +49,5 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

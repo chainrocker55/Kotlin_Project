@@ -34,6 +34,15 @@ class InventoryFragment : Fragment() {
 
         binding.inventortViewModel = inventortViewModel
         binding.setLifecycleOwner(this)
+
+        val adapter = InventoryAdapter()
+        binding.pokemonList.adapter = adapter
+        inventortViewModel.pokemons.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
+
         inventortViewModel.navigateToInsert.observe(this, Observer { click ->
             click?.let {
                 this.findNavController().navigate(
