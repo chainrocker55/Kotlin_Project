@@ -46,19 +46,20 @@ class EditPokemonFragment : Fragment() {
 
         binding.editPokemonViewModel = editPokemonViewModel
         binding.setLifecycleOwner(this)
+        binding.apply {
+            btnEdit.setOnClickListener {
+                editPokemonViewModel.onEdit(txtName.text.toString(),txtType.text.toString(),txtPower.text.toString())
+            }
+        }
         if (savedInstanceState != null) {
             name = savedInstanceState.getString(KEY_NAME, "")
             type = savedInstanceState.getString(KEY_TYPE, "")
             power = savedInstanceState.getString(KEY_POWER, "")
             //showCurrentState()
             editPokemonViewModel.onSetValue(name,type,power)
-            Timber.i("Name = ${name} Type =  $type} Power =  ${power}")
+            Timber.i("Name = ${name} Type =  ${type} Power =  ${power}")
         }
-        binding.apply {
-            btnEdit.setOnClickListener {
-                editPokemonViewModel.onEdit(txtName.text.toString(),txtType.text.toString(),txtPower.text.toString())
-            }
-        }
+
         editPokemonViewModel.navigateToInventory.observe(this, Observer {
             if (it==true){
                 this.findNavController().navigate(

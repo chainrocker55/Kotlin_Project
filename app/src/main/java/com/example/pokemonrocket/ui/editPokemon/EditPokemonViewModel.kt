@@ -65,16 +65,21 @@ class EditPokemonViewModel(val dataSource: PokemonDatabaseDao,
             _name.value = txtName
             _type.value = txtType
             _power.value = txtPower
-            val oldPokemon = database.get(pokemonId)
 
+            Log.i("Edit Pokemon",name.value.toString()+" "+type.value.toString()+" "+power.value.toString())
+
+            var oldPokemon : Pokemon = getPokemon(pokemonId)
             oldPokemon.name = name.value.toString()
             oldPokemon.type = type.value.toString()
             oldPokemon.power = power.value.toString().toInt()
 
-            Log.i("Edit Pokemon",name.value.toString()+" "+type.value.toString()+" "+power.value.toString())
-
             edit(oldPokemon)
             _showSnackbarEvent.value = true
+        }
+    }
+    private suspend fun getPokemon(pokemonId:Long):Pokemon {
+        return withContext(Dispatchers.IO) {
+            database.get(pokemonId)
         }
     }
     private suspend fun edit(pokemon: Pokemon) {
