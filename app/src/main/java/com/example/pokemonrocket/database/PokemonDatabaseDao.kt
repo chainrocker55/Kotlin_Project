@@ -15,9 +15,11 @@ interface PokemonDatabaseDao{
     @Query("SELECT * FROM PokemonRocketTable WHERE pokemonId = :key")
     fun get(key: Long) : Pokemon
 
+    @Query("SELECT * from PokemonRocketTable WHERE pokemonId = :key")
+    fun getPokemonWithId(key: Long): LiveData<Pokemon>
+
     @Query("DELETE FROM PokemonRocketTable")
     fun clear()
-
 
     @Query("SELECT * FROM PokemonRocketTable ORDER BY pokemonId DESC")
     fun  getAllPokemon(): LiveData<List<Pokemon>>

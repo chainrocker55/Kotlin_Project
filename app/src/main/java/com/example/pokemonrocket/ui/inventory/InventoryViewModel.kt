@@ -19,6 +19,9 @@ class InventoryViewModel(val dataSource: PokemonDatabaseDao,
     private val _navigateToInsert = MutableLiveData<Boolean>()
     val navigateToInsert: LiveData<Boolean> get() = _navigateToInsert
 
+    private val _navigateToEdit = MutableLiveData<Long>()
+    val navigateToEdit: LiveData<Long> get() = _navigateToEdit
+
     val database = dataSource
 
     val pokemons = database.getAllPokemon()
@@ -73,6 +76,14 @@ class InventoryViewModel(val dataSource: PokemonDatabaseDao,
         super.onCleared()
         Log.i("InventoryViewModel", "InventoryViewModel destroyed!")
     }
+    fun onPokemonClicked(id: Long) {
+
+        _navigateToEdit.value = id
+    }
+    fun onEditNavigated() {
+        _navigateToEdit.value = null
+    }
+
 
 
 }

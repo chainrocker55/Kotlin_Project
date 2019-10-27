@@ -6,6 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
+            name="pokemon"
+            type="com.example.pokemonrocket.database.Pokemon" />
+        <variable
             name="clickListener"
             type="com.example.pokemonrocket.ui.inventory.InventoryListener" />
     </data>
@@ -16,8 +19,10 @@
     android:layout_marginLeft="@dimen/fab_margin"
     android:layout_marginRight="@dimen/fab_margin"
     android:layout_marginTop="2dp"
-    android:onClick="@{()-> clickListener.onClick(pokemom)}"
+    android:onClick="@{()-> clickListener.onClick(pokemon)}"
     android:background="@drawable/border">
+
+
 
     <TextView
         android:id="@+id/name"
@@ -33,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:pokemonNameString="@{pokemon}"
         tools:text="Wednesday" />
 
     <TextView
@@ -48,6 +54,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name"
+        app:pokemonTypePowerString="@{pokemon}"
         tools:text="Excellent!!!" />
 
 

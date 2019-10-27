@@ -42,4 +42,8 @@
     <string name="title_pokemon">title_pokemon</string>
     <string name="name_pokemon"><b>Pokemon Name : </b> %s</string>
     <string name="type_power"><b>Type : </b> %s   <b>Power : </b> %d</string>
+
+    <string name="close">Close</string>
+    <string name="edit">Edit</string>
+    <string name="update_message">Edit pokemon success</string>
 </resources>

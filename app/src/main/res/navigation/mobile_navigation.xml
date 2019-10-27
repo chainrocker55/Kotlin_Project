@@ -47,6 +47,13 @@
     <fragment
         android:id="@+id/editPokemonFragment"
         android:name="com.example.pokemonrocket.ui.editPokemon.EditPokemonFragment"
-        android:label="EditPokemonFragment" />
+        android:label="EditPokemonFragment" >
+        <argument
+            android:name="pokemonId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_editPokemonFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment" />
+    </fragment>
 
 </navigation>

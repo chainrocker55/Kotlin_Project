@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.pokemonrocket.R
 import com.example.pokemonrocket.database.PokemonDatabase
@@ -35,11 +38,16 @@ class InventoryFragment : Fragment() {
         binding.inventortViewModel = inventortViewModel
         binding.setLifecycleOwner(this)
 
-        val adapter = InventoryAdapter()
+        val adapter = InventoryAdapter(InventoryListener { pokemonId ->
+            Toast.makeText(context, "${pokemonId}", Toast.LENGTH_SHORT).show()
+            inventortViewModel.onPokemonClicked(pokemonId)
+        })
+
+
         binding.pokemonList.adapter = adapter
         inventortViewModel.pokemons.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 
@@ -63,6 +71,16 @@ class InventoryFragment : Fragment() {
                 inventortViewModel.doneShowingSnackbar()
             }
         })
+        inventortViewModel.navigateToEdit.observe(this, Observer { pokemon ->
+            pokemon?.let {
+                this.findNavController().navigate(
+                    InventoryFragmentDirections.actionInventoryFragmentToEditPokemonFragment(pokemon)
+                )
+                inventortViewModel.onEditNavigated()
+            }
+        })
+        val manager = GridLayoutManager(activity, 1)
+        binding.pokemonList.layoutManager = manager as RecyclerView.LayoutManager?
         return binding.root
     }
 

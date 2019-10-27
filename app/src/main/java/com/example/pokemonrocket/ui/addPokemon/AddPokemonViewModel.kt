@@ -42,13 +42,6 @@ class AddPokemonViewModel(
     }
 
 
-    init {
-        Log.i("AddViewModel", "AddViewModel created!")
-
-    }
-
-
-
     private var _showSnackbarEvent = MutableLiveData<Boolean?>()
     val showSnackBarEvent: LiveData<Boolean?>
         get() = _showSnackbarEvent
