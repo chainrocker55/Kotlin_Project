@@ -46,4 +46,8 @@
     <string name="close">Close</string>
     <string name="edit">Edit</string>
     <string name="update_message">Edit pokemon success</string>
+    <string name="delete_message">Delete pokemon success!!</string>
+    <string name="delete">Delete</string>
+    <string name="title_rocket">title_rocket</string>
+    <string name="title_addpokemon">title_addpokemon</string>
 </resources>

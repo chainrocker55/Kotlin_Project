@@ -14,36 +14,19 @@
         android:layout_height="match_parent"
         android:background="@drawable/background">
 
-        <TextView
-            android:id="@+id/list_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/edit_pokemon"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/roboto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/txt_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="49dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/name"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
+            android:text="@{editPokemonViewModel.pokemon.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_title"
-            android:text="@{editPokemonViewModel.pokemon.name}"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <EditText
             android:id="@+id/txt_type"
@@ -52,12 +35,12 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/type"
+            android:importantForAutofill="no"
             android:inputType="textPersonName"
+            android:text="@{editPokemonViewModel.pokemon.type}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_name"
-            android:text="@{editPokemonViewModel.pokemon.type}"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
         <EditText
             android:id="@+id/txt_power"
@@ -66,32 +49,67 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="@string/power"
+            android:importantForAutofill="no"
             android:inputType="number"
+            android:maxLength="50000"
+            android:text="@{String.valueOf(editPokemonViewModel.pokemon.power)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_type"
-            android:text="@{String.valueOf(editPokemonViewModel.pokemon.power)}"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_type" />
 
         <Button
             android:id="@+id/btn_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="89dp"
+            android:layout_height="45dp"
             android:layout_marginTop="32dp"
+            android:background="#D4B031"
             android:text="@string/edit"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit2"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_power" />
 
         <Button
+            android:id="@+id/btn_edit2"
+            android:layout_width="88dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="32dp"
+            android:background="#E62323"
+            android:onClick="@{() -> editPokemonViewModel.onDelete()}"
+            android:text="@string/delete"
+            android:textColor="@color/design_default_color_on_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_edit"
+            app:layout_constraintTop_toBottomOf="@+id/txt_power" />
+
+        <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="@string/close"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="90dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/blue"
             android:onClick="@{()-> editPokemonViewModel.onClose()}"
+            android:text="@string/close"
+            android:textColor="@color/design_default_color_on_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="350dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/pokemon_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

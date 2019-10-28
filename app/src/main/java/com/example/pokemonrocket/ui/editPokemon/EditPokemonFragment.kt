@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -48,7 +49,12 @@ class EditPokemonFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.apply {
             btnEdit.setOnClickListener {
-                editPokemonViewModel.onEdit(txtName.text.toString(),txtType.text.toString(),txtPower.text.toString())
+                if(txtName.text.toString().length > 0 && txtType.text.toString().length > 0 && txtPower.text.toString().length > 0){
+                    editPokemonViewModel.onEdit(txtName.text.toString(),txtType.text.toString(),txtPower.text.toString())
+                }else{
+                    Toast.makeText(context, "Please to check input values not null!!", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
         if (savedInstanceState != null) {
@@ -68,7 +74,7 @@ class EditPokemonFragment : Fragment() {
                 editPokemonViewModel.doneNavigating()
             }
         })
-        editPokemonViewModel.showSnackBarEvent.observe(this, Observer {
+        editPokemonViewModel.showSnackBarEventEdit.observe(this, Observer {
             if (it == true) { // Observed state is true.
                 Snackbar.make(
                     activity!!.findViewById(android.R.id.content),
@@ -77,10 +83,28 @@ class EditPokemonFragment : Fragment() {
                 ).show()
                 // Reset state to make sure the toast is only shown once, even if the device
                 // has a configuration change.
-                editPokemonViewModel.doneShowingSnackbar()
+                editPokemonViewModel.doneShowingSnackbarEdit()
                 hideKeyboard()
                 this.findNavController().navigate(
                    EditPokemonFragmentDirections.actionEditPokemonFragmentToInventoryFragment()
+                )
+
+            }
+        })
+
+        editPokemonViewModel.showSnackBarEventDelete.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                Snackbar.make(
+                    activity!!.findViewById(android.R.id.content),
+                    getString(R.string.delete_message),
+                    Snackbar.LENGTH_SHORT // How long to display the message.
+                ).show()
+                // Reset state to make sure the toast is only shown once, even if the device
+                // has a configuration change.
+                editPokemonViewModel.doneShowingSnackbarDelete()
+                hideKeyboard()
+                this.findNavController().navigate(
+                    EditPokemonFragmentDirections.actionEditPokemonFragmentToInventoryFragment()
                 )
 
             }

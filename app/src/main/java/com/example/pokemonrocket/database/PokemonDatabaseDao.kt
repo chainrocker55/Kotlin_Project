@@ -21,6 +21,9 @@ interface PokemonDatabaseDao{
     @Query("DELETE FROM PokemonRocketTable")
     fun clear()
 
+    @Query("DELETE FROM pokemonrockettable WHERE pokemonId = :key")
+    fun deleteById(key: Long)
+
     @Query("SELECT * FROM PokemonRocketTable ORDER BY pokemonId DESC")
     fun  getAllPokemon(): LiveData<List<Pokemon>>
 

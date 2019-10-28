@@ -29,11 +29,18 @@ class EditPokemonViewModel(val dataSource: PokemonDatabaseDao,
     private val _power = MutableLiveData<String>()
     val power : LiveData<String> get() = _power
 
-    private var _showSnackbarEvent = MutableLiveData<Boolean?>()
-    val showSnackBarEvent: LiveData<Boolean?>
-        get() = _showSnackbarEvent
-    fun doneShowingSnackbar() {
-        _showSnackbarEvent.value = null
+    private var _showSnackbarEventEdit = MutableLiveData<Boolean?>()
+    val showSnackBarEventEdit: LiveData<Boolean?>
+        get() = _showSnackbarEventEdit
+    fun doneShowingSnackbarEdit() {
+        _showSnackbarEventEdit.value = null
+    }
+
+    private var _showSnackbarEventDelete = MutableLiveData<Boolean?>()
+    val showSnackBarEventDelete: LiveData<Boolean?>
+        get() = _showSnackbarEventDelete
+    fun doneShowingSnackbarDelete() {
+        _showSnackbarEventDelete.value = null
     }
 
     //val pokemonString:
@@ -74,7 +81,19 @@ class EditPokemonViewModel(val dataSource: PokemonDatabaseDao,
             oldPokemon.power = power.value.toString().toInt()
 
             edit(oldPokemon)
-            _showSnackbarEvent.value = true
+            _showSnackbarEventEdit.value = true
+        }
+    }
+
+    fun onDelete(){
+        uiScope.launch {
+            delete(pokemonId)
+            _showSnackbarEventDelete.value = true
+        }
+    }
+    private suspend fun delete(pokemonId:Long) {
+         withContext(Dispatchers.IO) {
+            database.deleteById(pokemonId)
         }
     }
     private suspend fun getPokemon(pokemonId:Long):Pokemon {

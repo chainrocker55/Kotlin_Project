@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -72,7 +73,12 @@ class AddPokemonFragment : Fragment() {
 //
 //            invalidateAll()
             btnSave.setOnClickListener {
-                addPokemonViewModel.onSave(txtName.text.toString(),txtType.text.toString(),txtPower.text.toString())
+                if(txtName.text.toString().length > 0 && txtType.text.toString().length > 0 && txtPower.text.toString().length > 0){
+                    addPokemonViewModel.onSave(txtName.text.toString(),txtType.text.toString(),txtPower.text.toString())
+                }else{
+                    Toast.makeText(context, "Please to check input values not null!!", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
 //        addPokemonViewModel.navigateToInventory.observe(this, Observer { click ->
