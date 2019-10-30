@@ -10,77 +10,84 @@
             type="com.example.pokemonrocket.ui.addPokemon.AddPokemonViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/txt_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            android:text="@{addPokemonViewModel.nameTextVisible?null:addPokemonViewModel.name}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            android:importantForAutofill="no" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:paddingBottom="75dp">
 
-        <EditText
-            android:id="@+id/txt_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:hint="@string/type"
-            android:inputType="textPersonName"
-            android:text="@{addPokemonViewModel.typeTextVisible?null:addPokemonViewModel.type}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_name"
-            android:importantForAutofill="no" />
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/name"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@{addPokemonViewModel.nameTextVisible?null:addPokemonViewModel.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-        <EditText
-            android:id="@+id/txt_power"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:hint="@string/power"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="50000"
-            android:text="@{addPokemonViewModel.powerTextVisible?null:addPokemonViewModel.power}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_type" />
+            <EditText
+                android:id="@+id/txt_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/type"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:text="@{addPokemonViewModel.typeTextVisible?null:addPokemonViewModel.type}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="118dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/side_nav_bar"
-            android:text="@string/save"
-            android:textColor="@color/design_default_color_on_primary"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.457"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_power" />
+            <EditText
+                android:id="@+id/txt_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/power"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="50000"
+                android:text="@{addPokemonViewModel.powerTextVisible?null:addPokemonViewModel.power}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_type" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="351dp"
-            android:layout_height="79dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@string/title_addpokemon"
-            android:src="@drawable/pokemon_add"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="118dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/side_nav_bar"
+                android:text="@string/save"
+                android:textColor="@color/design_default_color_on_primary"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.457"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_power" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="351dp"
+                android:layout_height="79dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/title_addpokemon"
+                android:src="@drawable/pokemon_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

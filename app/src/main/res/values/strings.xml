@@ -50,4 +50,6 @@
     <string name="delete">Delete</string>
     <string name="title_rocket">title_rocket</string>
     <string name="title_addpokemon">title_addpokemon</string>
+    <string name="search">Search</string>
+    <string name="todo">TODO</string>
 </resources>

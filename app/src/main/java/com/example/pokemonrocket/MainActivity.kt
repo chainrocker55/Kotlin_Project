@@ -14,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.*
+import androidx.viewpager.widget.ViewPager
 import com.example.pokemonrocket.databinding.ActivityMainBinding
 import com.gigamole.navigationtabstrip.NavigationTabStrip
 import kotlinx.android.synthetic.main.content_main.*
@@ -47,26 +48,26 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val  navigationTabStrip:NavigationTabStrip = findViewById(R.id.nts)
-        navigationTabStrip.setTitles("Home", "Search", "About")
-        navigationTabStrip.setTabIndex(0, true)
-        navigationTabStrip.setTitleSize(50F)
-        navigationTabStrip.setStripColor(Color.WHITE)
-        navigationTabStrip.setStripWeight(6F)
-        navigationTabStrip.setStripFactor(2F)
-        navigationTabStrip.setStripType(NavigationTabStrip.StripType.LINE)
-        navigationTabStrip.setStripGravity(NavigationTabStrip.StripGravity.BOTTOM)
-        navigationTabStrip.setTypeface("fonts/typeface.ttf")
-        navigationTabStrip.setCornersRadius(3F)
-        navigationTabStrip.setBackgroundColor(Color.rgb(0,133,119))
-        navigationTabStrip.setAnimationDuration(300)
-        navigationTabStrip.setInactiveColor(Color.GRAY)
-        navigationTabStrip.setActiveColor(Color.WHITE)
-        navigationTabStrip.setOnClickListener{
-            tabClick(navigationTabStrip.tabIndex)
-        }
-        //navigationTabStrip.setOnPageChangeListener(...)
-        navigationTabStrip.setOnTabStripSelectedIndexListener(navigationTabStrip.onTabStripSelectedIndexListener)
+//        val  navigationTabStrip:NavigationTabStrip = findViewById(R.id.nts)
+//        navigationTabStrip.setTitles("Home", "Search", "About")
+//        navigationTabStrip.setTabIndex(0, true)
+//        navigationTabStrip.setTitleSize(50F)
+//        navigationTabStrip.setStripColor(Color.WHITE)
+//        navigationTabStrip.setStripWeight(6F)
+//        navigationTabStrip.setStripFactor(2F)
+//        navigationTabStrip.setStripType(NavigationTabStrip.StripType.LINE)
+//        navigationTabStrip.setStripGravity(NavigationTabStrip.StripGravity.BOTTOM)
+//        navigationTabStrip.setTypeface("fonts/typeface.ttf")
+//        navigationTabStrip.setCornersRadius(3F)
+//        navigationTabStrip.setBackgroundColor(Color.rgb(0,133,119))
+//        navigationTabStrip.setAnimationDuration(300)
+//        navigationTabStrip.setInactiveColor(Color.GRAY)
+//        navigationTabStrip.setActiveColor(Color.WHITE)
+//        navigationTabStrip.setOnClickListener{
+//            tabClick(navigationTabStrip.tabIndex)
+//        }
+
+        //navigationTabStrip.setOnTabStripSelectedIndexListener(navigationTabStrip.onTabStripSelectedIndexListener)
 //
 //        Log.i("TabIndex", navigationTabStrip.tabIndex.toString())
 

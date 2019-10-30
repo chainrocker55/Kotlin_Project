@@ -6,6 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/about"/>
     <item
+        android:id="@+id/searchFragment"
+        android:orderInCategory="100"
+        android:title="@string/search"/>
+    <item
         android:id="@+id/nav_share"
         android:orderInCategory="100"
         android:icon="@drawable/ic_menu_share"
