@@ -1,5 +1,6 @@
 package com.example.pokemonrocket.ui.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.pokemonrocket.R
 import com.example.pokemonrocket.database.PokemonDatabase
 import com.example.pokemonrocket.databinding.FragmentHomeBinding
+import com.gigamole.navigationtabstrip.NavigationTabStrip
 
 class HomeFragment : Fragment() {
 

@@ -1,7 +1,10 @@
 package com.example.pokemonrocket
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.findNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -12,12 +15,15 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.*
 import com.example.pokemonrocket.databinding.ActivityMainBinding
+import com.gigamole.navigationtabstrip.NavigationTabStrip
+import kotlinx.android.synthetic.main.content_main.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,6 +46,35 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val  navigationTabStrip:NavigationTabStrip = findViewById(R.id.nts)
+        navigationTabStrip.setTitles("Home", "Search", "About")
+        navigationTabStrip.setTabIndex(0, true)
+        navigationTabStrip.setTitleSize(50F)
+        navigationTabStrip.setStripColor(Color.WHITE)
+        navigationTabStrip.setStripWeight(6F)
+        navigationTabStrip.setStripFactor(2F)
+        navigationTabStrip.setStripType(NavigationTabStrip.StripType.LINE)
+        navigationTabStrip.setStripGravity(NavigationTabStrip.StripGravity.BOTTOM)
+        navigationTabStrip.setTypeface("fonts/typeface.ttf")
+        navigationTabStrip.setCornersRadius(3F)
+        navigationTabStrip.setBackgroundColor(Color.rgb(0,133,119))
+        navigationTabStrip.setAnimationDuration(300)
+        navigationTabStrip.setInactiveColor(Color.GRAY)
+        navigationTabStrip.setActiveColor(Color.WHITE)
+        navigationTabStrip.setOnClickListener{
+            tabClick(navigationTabStrip.tabIndex)
+        }
+        //navigationTabStrip.setOnPageChangeListener(...)
+        navigationTabStrip.setOnTabStripSelectedIndexListener(navigationTabStrip.onTabStripSelectedIndexListener)
+//
+//        Log.i("TabIndex", navigationTabStrip.tabIndex.toString())
+
+
+    }
+
+    private fun tabClick(index: Int) {
+        Log.i("TabIndex", index.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
